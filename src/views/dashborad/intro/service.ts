@@ -1,3 +1,5 @@
 export interface Menu {
-    id:String
+    key:String,
+    id:String,
+    customContent:String
 } 
