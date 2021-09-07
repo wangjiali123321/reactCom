@@ -7,6 +7,8 @@ const thead= [{
   prop:'id'
 },{
   prop: 'customContent',
+  label: 'customContent',
+  formatType: 'linkByName'
 },{
   prop: 'operation'
 }]
@@ -28,19 +30,22 @@ function BetterTable() {
         >
           {
             thead.map((e,index)=>{
-              return <Table.Column<Menu> title={e.prop} dataIndex={e.prop} key={index} ></Table.Column> 
+              let welcome: {} | null | undefined
+              if(e.formatType){
+                welcome = <h2>formatType</h2>
+              }else{
+                welcome = <h2>你好</h2>
+              }
+              return  <Table.Column<Menu> 
+                        title={e.prop} 
+                        dataIndex={e.prop} 
+                        key={index} 
+                        render={(text, record:any) => (
+                          welcome
+                        )}
+                      ></Table.Column> 
             })
           }
-          <Table.Column
-            title="Action"
-            key="action"
-            render={(text, record:any) => (
-              <div>
-                <a>Invite {record.lastName}</a>
-                <a>Delete</a>
-              </div>
-            )}
-          />
         </Table>
       </section>
       
