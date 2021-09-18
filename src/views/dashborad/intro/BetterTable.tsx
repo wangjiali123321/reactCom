@@ -3,15 +3,16 @@ import { Table } from 'antd';
 import { Menu } from './service'
 import './index.less'
 
-const thead= [{
-  prop:'id'
-},{
-  prop: 'customContent',
-  label: 'customContent',
-  formatType: 'linkByName'
-},{
-  prop: 'operation'
-}]
+interface theadItemProps {
+  prop: String,
+  label?: String,
+  formatType?: String,
+  operation?: String
+}
+
+interface BetterTableProps {
+  thead: Array<theadItemProps>
+}
 
 const menuData:Menu[]=[{
   id:'5',
@@ -19,7 +20,7 @@ const menuData:Menu[]=[{
   customContent: '123'
 }]
 
-function BetterTable() {
+function BetterTable(props: BetterTableProps) {
   return (
     // <div>123</div>
     <div className="lucky_table_better">
@@ -29,19 +30,29 @@ function BetterTable() {
           dataSource={menuData}
         >
           {
-            thead.map((e,index)=>{
-              let welcome: {} | null | undefined
-              if(e.formatType){
-                welcome = <h2>formatType</h2>
-              }else{
-                welcome = <h2>你好</h2>
+            props.thead.map((e,index)=>{
+              let columnContent : (text:any, record:any)=>{}
+              if(e.prop === 'operation'){
+                columnContent = function(text:any, record:any){
+                  return <div >
+                          <a>Invite {record.name}</a>
+                          <a>Delete</a>
+                        </div>
+                }
+              }else if(e.formatType){
+                columnContent = function(text:any, record:any){
+                  return <h2>formatType</h2>
+                } 
+              }else {
+                columnContent = function(text:any, record:any){
+                  return <h2>你好</h2>
+                } 
               }
               return  <Table.Column<Menu> 
-                        title={e.prop} 
-                        dataIndex={e.prop} 
+                        title={e.prop}
                         key={index} 
                         render={(text, record:any) => (
-                          welcome
+                          columnContent(text,record)
                         )}
                       ></Table.Column> 
             })
