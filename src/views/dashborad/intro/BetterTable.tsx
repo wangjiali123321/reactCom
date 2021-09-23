@@ -1,28 +1,27 @@
 import React, { useMemo, useCallback, useEffect, useState, memo } from 'react';
 import { Table } from 'antd';
-import { Menu } from './service'
+import { Menu,BetterTableProps,optTypeItemProps} from './service'
 import './index.less'
 
-interface theadItemProps {
-  prop: String,
-  label?: String,
-  formatType?: String,
-  operation?: String
-}
-
-interface BetterTableProps {
-  thead: Array<theadItemProps>
-}
-
-const menuData:Menu[]=[{
-  id:'5',
-  key:'1',
-  customContent: '123'
-}]
-
 function BetterTable(props: BetterTableProps) {
+  const [menuData, setmenuData] = useState<Menu[]>([{
+    id:'5',
+    key:'1',
+    customContent: '123'
+  }]);
+  useEffect(()=>{
+    for(let i in menuData){
+      let operation= []
+      let temp = props.operateConfig.optFunc(menuData[i])
+      for(let j in temp){
+        operation.push(props.operateConfig.optType[temp[j]])
+      }
+      console.log(operation)
+      menuData[i]['operation'] = operation;
+      setmenuData(menuData)
+    }
+  })
   return (
-    // <div>123</div>
     <div className="lucky_table_better">
       <header></header>
       <section>
@@ -35,8 +34,9 @@ function BetterTable(props: BetterTableProps) {
               if(e.prop === 'operation'){
                 columnContent = function(text:any, record:any){
                   return <div >
-                          <a>Invite {record.name}</a>
-                          <a>Delete</a>
+                          {record.operation && record.operation.map((each:optTypeItemProps,index:number)=>{
+                            return <div key={index}>{each.text}</div>
+                          })}
                         </div>
                 }
               }else if(e.formatType){

@@ -13,9 +13,23 @@ function Intro() {
     prop: 'operation'
   }]
 
+  const operateConfig = {
+    optType: {
+      toRemove: {event:'toRemove',text: 'remove',type:'danger'},
+      togo: {event:'togo',text: 'togo',type:'danger'}
+    },
+    optFunc: function(val:any, userinfo:any){
+      if(val){
+
+      }
+      return  ['toRemove','togo']
+    }
+  }
+  
+
   return (
     <PageWrap className="intro">
-      <BetterTable thead={thead} />
+      <BetterTable thead={thead} operateConfig={operateConfig} />
     </PageWrap>
   );
 }
