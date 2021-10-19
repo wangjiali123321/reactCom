@@ -3,6 +3,8 @@ import PageWrap from '../../components/PageWrap';
 import BetterTable from './BetterTable'
 
 function Intro() {
+  const [toRefreshList, setToRefreshList] = useState<Boolean>(false);
+
   const thead= [{
     prop:'id'
   },{
@@ -25,11 +27,17 @@ function Intro() {
       return  ['toRemove','togo']
     }
   }
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setToRefreshList(!toRefreshList)
+    },3000)
+  },[])
   
 
   return (
     <PageWrap className="intro">
-      <BetterTable thead={thead} operateConfig={operateConfig} />
+      <BetterTable thead={thead} operateConfig={operateConfig} toRefreshList={toRefreshList} />
     </PageWrap>
   );
 }

@@ -29,5 +29,6 @@ export interface operateConfigProps {
 
 export interface BetterTableProps {
     thead: Array<theadItemProps>,
-    operateConfig: operateConfigProps
+    operateConfig: operateConfigProps,
+    toRefreshList: Boolean
 }

@@ -9,7 +9,9 @@ function BetterTable(props: BetterTableProps) {
     key:'1',
     customContent: '123'
   }]);
+
   useEffect(()=>{
+    console.log(1)
     for(let i in menuData){
       let operation= []
       let temp = props.operateConfig.optFunc(menuData[i])
@@ -20,7 +22,12 @@ function BetterTable(props: BetterTableProps) {
       menuData[i]['operation'] = operation;
       setmenuData(menuData)
     }
-  })
+  },[])
+
+  useEffect(()=>{
+    console.log('torefresh')
+  },[props.toRefreshList])
+
   return (
     <div className="lucky_table_better">
       <header></header>
