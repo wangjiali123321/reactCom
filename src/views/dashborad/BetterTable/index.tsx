@@ -12,6 +12,9 @@ function Intro() {
     label: 'customContent',
     formatType: 'linkByName'
   },{
+    prop: 'fisrtslot',
+    formatType: 'prop'
+  },{
     prop: 'operation'
   }]
 
@@ -28,6 +31,8 @@ function Intro() {
     }
   }
 
+  const firstslot = <span>firstslot</span>
+
   useEffect(()=>{
     setTimeout(()=>{
       setToRefreshList(!toRefreshList)
@@ -37,7 +42,7 @@ function Intro() {
 
   return (
     <PageWrap className="intro">
-      <BetterTable thead={thead} operateConfig={operateConfig} toRefreshList={toRefreshList} />
+      <BetterTable thead={thead} operateConfig={operateConfig} toRefreshList={toRefreshList} firstslot={firstslot}/>
     </PageWrap>
   );
 }

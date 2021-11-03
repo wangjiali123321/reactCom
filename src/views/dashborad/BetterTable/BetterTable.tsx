@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useEffect, useState, memo } from 'react';
-import { Table } from 'antd';
+import { Table,Button } from 'antd';
 import { Menu,BetterTableProps,optTypeItemProps} from './service'
 import './index.less'
 
@@ -42,13 +42,14 @@ function BetterTable(props: BetterTableProps) {
                 columnContent = function(text:any, record:any){
                   return <div >
                           {record.operation && record.operation.map((each:optTypeItemProps,index:number)=>{
-                            return <div key={index}>{each.text}</div>
+                            // return <div key={index}>{each.text}</div>
+                            return <Button key={index} >{each.text}</Button>
                           })}
                         </div>
                 }
-              }else if(e.formatType){
+              }else if(e.formatType === 'prop'){
                 columnContent = function(text:any, record:any){
-                  return <h2>formatType</h2>
+                  return <h2>{props['firstslot']}</h2>
                 } 
               }else {
                 columnContent = function(text:any, record:any){

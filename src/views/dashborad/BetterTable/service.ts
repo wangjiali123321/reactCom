@@ -1,3 +1,5 @@
+
+
 export interface Menu {
     key:String,
     id:String,
@@ -30,5 +32,6 @@ export interface operateConfigProps {
 export interface BetterTableProps {
     thead: Array<theadItemProps>,
     operateConfig: operateConfigProps,
-    toRefreshList: Boolean
+    toRefreshList: Boolean,
+    firstslot: any
 }
