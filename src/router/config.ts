@@ -86,8 +86,8 @@ const routes: IRoute[] = [
         children: [
           {
             path: '/dashborad/intro',
+            component: React.lazy(() => import('../views/dashborad/BetterTableCC')),
             // component: React.lazy(() => import('../views/dashborad/BetterTable')),
-            component: React.lazy(() => import('../views/dashborad/BetterTable')),
             meta: {
               title: 'betterTable',
               icon: 'read',

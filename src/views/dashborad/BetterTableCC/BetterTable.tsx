@@ -8,15 +8,15 @@ export default class BetterTable extends Component <any, any> {
       num: 0,
       type: '原生',
     }
-    console.log('constructor')
+    // console.log('constructor')
   }
 
   componentWillReceiveProps(props:any,props1:any){
-    console.log(props,props1)
+    // console.log(props,props1)
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
+    // console.log('componentDidMount')
     document.getElementById('btn')!.addEventListener('click', this.yuanshengClick)
   }
 
@@ -37,27 +37,27 @@ export default class BetterTable extends Component <any, any> {
     }, () => {
       console.log(this.state.num)
     })
-    console.log(this.state.num)
+    // console.log(this.state.num)
   }
 
   handleClick = () => {
-    this.setState({
-      num: 4,
-      type: '原生',
-    }, () => {
-      console.log(this.state.num)
-    })
-    this.setState({
-      num: 4,
-      type: '原生',
-    }, () => {
-      console.log(this.state.num)
-    })
-    console.log(this.state.num)
+    // this.setState({
+    //   num: 4,
+    //   type: '原生',
+    // }, () => {
+    //   console.log(this.state.num)
+    // })
+    // this.setState({
+    //   num: 4,
+    //   type: '原生',
+    // }, () => {
+    //   console.log(this.state.num)
+    // })
+    // console.log(this.state.num)
   }
 
   render() {
-    console.log('render')
+    // console.log('render')
     return (
       <div id="CommunicateChild">
         <div>
