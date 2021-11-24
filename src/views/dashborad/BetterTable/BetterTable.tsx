@@ -47,7 +47,7 @@ function BetterTable(props: BetterTableProps) {
                           })}
                         </div>
                 }
-              }else if(e.formatType === 'prop'){
+              }else if(e.formatType === 'slot'){
                 columnContent = function(text:any, record:any){
                   return <h2>{props['firstslot']}</h2>
                 } 

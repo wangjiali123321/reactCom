@@ -13,7 +13,7 @@ function Intro() {
     formatType: 'linkByName'
   },{
     prop: 'fisrtslot',
-    formatType: 'prop'
+    formatType: 'slot'
   },{
     prop: 'operation'
   }]
